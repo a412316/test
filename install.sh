@@ -126,8 +126,8 @@ EOF
 set_password(){
     clear
     echo "\033[1;34mPlease enter password for shadowsocks-libev:\033[0m"
-    read -p "(Default password: M3chD09):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="M3chD09"
+    read -p "(Default password: A102107xy):" shadowsockspwd
+    [ -z "${shadowsockspwd}" ] && shadowsockspwd="A102107xy"
     echo "\033[1;35mpassword = ${shadowsockspwd}\033[0m"
 }
 
@@ -298,9 +298,9 @@ print_ss_info(){
     echo "Your Server IP        :  ${youdomain} "
     echo "Your Server Port      :  443 "
     echo "Your UUID             :  $(v2uuid) "
-	echo "Network Type          :  ws "
-	echo "Network Path          :  /ray "
-	echo "TLS                   :  enabled "
+    echo "Network Type          :  ws "
+    echo "Network Path          :  /ray "
+    echo "TLS                   :  enabled "
     echo "Enjoy it!"
 }
 install_nginx
