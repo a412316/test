@@ -57,6 +57,8 @@ elif [ $release = 7 ];then
         yum update -y
         cp -r /boot/grub2/ /boot/efi/EFI/centos
     else
+        yum install epel-release -y
+        yum makecache
         yum update -y
     fi
 else
