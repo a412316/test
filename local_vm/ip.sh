@@ -36,25 +36,32 @@ EOF
             rows=`cat /etc/default/grub -n | grep /root | awk '{print $1}'`
             sed -i ''$rows'c GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/root rd.lvm.lv=centos/swap net.ifnames=0 biosdevname=0 rhgb quiet"' /etc/default/grub
             grub2-mkconfig -o /boot/grub2/grub.cfg
+            nmcli connection delete "$network_card"
             cat > /tmp/ip2.sh << EOF
 #!/bin/bash
-network_card=\`nmcli connection show | grep -v virbr0 | grep -v NAME | awk '{print \$4}'\`
-if [ \$network_card == eth0 ];then
+ip a | grep eth0 > /dev/null
+if [ \$? == 0 ];then
     nmcli connection show | grep -i wired >> /dev/null
-    if [ $? == 0 ];then
+    if [ \$? == 0 ];then
         name1=\`nmcli connection show | grep eth0 | awk '{print \$1}'\`
         name2=\`nmcli connection show | grep eth0 | awk '{print \$2}'\`
         name3=\`nmcli connection show | grep eth0 | awk '{print \$3}'\`
         name4="\$name1 \$name2 \$name3"
         nmcli connection delete "\$name4"
         nmcli connection show | grep -i wired >> /dev/null
-        if [ $? == 0 ];then
+        if [ \$? == 0 ];then
             exit
         else
             nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
         fi
     else
-        nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+        nmcli connection show | awk '{print \$1}' | grep eth0 >> /dev/null
+        if [ \$? == 0 ];then
+            nmcli connection delete eth0
+            nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+        else
+            nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+        fi
     fi
     echo "DNS1=223.5.5.5" >> /etc/sysconfig/network-scripts/ifcfg-eth0
     echo "DNS2=$gateway" >> /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -84,7 +91,7 @@ else
     exit 1
 fi
 EOF
-            chmod +x /tmp/ip.sh
+            chmod +x /tmp/ip2.sh
             chmod +x /etc/rc.d/rc.local
             echo "/tmp/ip2.sh" >> /etc/rc.d/rc.local
             reboot
