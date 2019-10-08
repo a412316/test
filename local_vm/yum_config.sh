@@ -34,7 +34,14 @@ EOF
             sed -i 's/$basearch/x86_64/g' /etc/yum.repos.d/CentOS-Base_new.repo
             grep -v http://mirrors.aliyuncs.com /etc/yum.repos.d/CentOS-Base_new.repo > /etc/yum.repos.d/CentOS-Base.repo && rm -rf /etc/yum.repos.d/CentOS-Base_new.repo
         elif grep -i "Red Hat" /etc/redhat-release > /dev/null ;then
-            rpm -qa | grep yum 
+            mkdir /tmp/rpm
+            wget -O /tmp/rpm/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm
+            wget -O /tmp/rpm/yum-3.4.3-163.el7.centos.noarch.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-3.4.3-163.el7.centos.noarch.rpm
+            wget -O /tmp/rpm/yum-plugin-fastestmirror-1.1.31-52.el7.noarch.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-plugin-fastestmirror-1.1.31-52.el7.noarch.rpm
+            wget -O /tmp/rpm/yum-utils-1.1.31-52.el7.noarch.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-utils-1.1.31-52.el7.noarch.rpm
+            wget -O /tmp/rpm/yum-langpacks-0.4.2-7.el7.noarch.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-langpacks-0.4.2-7.el7.noarch.rpm
+            rpm -qa | grep yum | xargs rpm -e --nodeps
+            rpm -ivh /tmp/rpm/yum-*
         else
             exit 1
         fi
