@@ -6,6 +6,9 @@ else
     if [ $release -ge 7 ];then
         read -p "input new hostname:" name-hostname
         hostnamectl set-hostname $name-hostname
+        systemctl stop firewalld
+        systemctl disable firewalld
+        sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
         network_card=`nmcli connection show | grep -v virbr0 | grep -v NAME | awk '{print $1}'`
         ipaddress=`ip a | grep inet | grep -v 127.0.0.1 | grep virbr0 -v | grep -v inet6 | awk '{print $2}' | awk -F "/" '{print $1}'`
         netmask=`ip a | grep inet | grep -v 127.0.0.1 | grep virbr0 -v | grep -v inet6 | awk '{print $2}' | awk -F "/" '{print $2}'`
