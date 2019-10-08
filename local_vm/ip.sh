@@ -63,7 +63,7 @@ if [ \$network_card == eth0 ];then
             hostname2=\$(hostname)
             echo "\$ipaddress   \$hostname2" >> /etc/hosts
         fi
-        wget -O /tmp/yum_config.sh https://raw.githubusercontent.com/a412316/test/master/local_vm/yum_config.sh && chmod +x /tmp/yum_config.sh && /tmp/yum_config.sh
+        wget -O /tmp/yum_config.sh https://raw.githubusercontent.com/a412316/test/master/local_vm/yum_config.sh && chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yumconfg.log
     fi
 else
     echo "Network Card is not eth0"
