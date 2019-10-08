@@ -36,7 +36,7 @@ EOF
             rows=`cat /etc/default/grub -n | grep /root | awk '{print $1}'`
             sed -i ''$rows'c GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/root rd.lvm.lv=centos/swap net.ifnames=0 biosdevname=0 rhgb quiet"' /etc/default/grub
             grub2-mkconfig -o /boot/grub2/grub.cfg
-            cat > /tmp/ip.sh << EOF
+            cat > /tmp/ip2.sh << EOF
 #!/bin/bash
 network_card=\`nmcli connection show | grep -v virbr0 | grep -v NAME | awk '{print \$4}'\`
 if [ \$network_card == eth0 ];then
@@ -46,6 +46,7 @@ if [ \$network_card == eth0 ];then
     echo "DNS2=$gateway" >> /etc/sysconfig/network-scripts/ifcfg-eth0
     systemctl restart NetworkManager
     nmcli connection down eth0 ; nmcli connection up eth0
+    sleep 5
     ping -c 5 baidu.com >> /tmp/1.txt
     grep not /tmp/1.txt
     if [ \$? == 0 ];then
@@ -71,7 +72,7 @@ fi
 EOF
             chmod +x /tmp/ip.sh
             chmod +x /etc/rc.d/rc.local
-            echo "/tmp/ip.sh" >> /etc/rc.d/rc.local
+            echo "/tmp/ip2.sh" >> /etc/rc.d/rc.local
             reboot
 		fi
 	else
