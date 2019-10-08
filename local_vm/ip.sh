@@ -4,8 +4,8 @@ if [ ! -f /etc/redhat-release ];then
 else
     release=`cat /etc/redhat-release | awk -F "." '{print $1}' | tr -cd 0-9`
     if [ $release -ge 7 ];then
-        read -p "input new hostname:" name-hostname
-        hostnamectl set-hostname $name-hostname
+        read -p "input new hostname:" namehost
+        hostnamectl set-hostname $namehost
         systemctl stop firewalld
         systemctl disable firewalld
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
