@@ -40,8 +40,22 @@ EOF
 #!/bin/bash
 network_card=\`nmcli connection show | grep -v virbr0 | grep -v NAME | awk '{print \$4}'\`
 if [ \$network_card == eth0 ];then
-    nmcli connection show | grep -i wired && network_card1=\`nmcli connection show | grep -v virbr0 | grep -v NAME | awk '{print \$1}'\` | nmcli connection delete "\$network_card1" 
-    nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+    nmcli connection show | grep -i wired >> /dev/null
+    if [ $? == 0 ];then
+        name1=\`nmcli connection show | grep eth0 | awk '{print \$1}'\`
+        name2=\`nmcli connection show | grep eth0 | awk '{print \$2}'\`
+        name3=\`nmcli connection show | grep eth0 | awk '{print \$3}'\`
+        name4="\$name1 \$name2 \$name3"
+        nmcli connection delete "\$name4"
+        nmcli connection show | grep -i wired >> /dev/null
+        if [ $? == 0 ];then
+            exit
+        else
+            nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+        fi
+    else
+        nmcli connection add con-name eth0 ifname eth0 type ethernet autoconnect yes ip4 $ipaddress/$netmask gw4 $gateway
+    fi
     echo "DNS1=223.5.5.5" >> /etc/sysconfig/network-scripts/ifcfg-eth0
     echo "DNS2=$gateway" >> /etc/sysconfig/network-scripts/ifcfg-eth0
     systemctl restart NetworkManager
