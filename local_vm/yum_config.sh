@@ -32,7 +32,7 @@ EOF
             wget -O /etc/yum.repos.d/CentOS-Base_new.repo http://mirrors.aliyun.com/repo/Centos-7.repo
             sed -i 's/$releasever/7.7.1908/g' /etc/yum.repos.d/CentOS-Base_new.repo
             sed -i 's/$basearch/x86_64/g' /etc/yum.repos.d/CentOS-Base_new.repo
-            gerp -v http://mirrors.aliyuncs.com /etc/yum.repos.d/CentOS-Base_new.repo > /etc/yum.repos.d/CentOS-Base.repo && rm -rf /etc/yum.repos.d/CentOS-Base_new.repo
+            grep -v http://mirrors.aliyuncs.com /etc/yum.repos.d/CentOS-Base_new.repo > /etc/yum.repos.d/CentOS-Base.repo && rm -rf /etc/yum.repos.d/CentOS-Base_new.repo
         elif grep -i "Red Hat" /etc/redhat-release > /dev/null ;then
             rpm -qa | grep yum 
         else
@@ -45,6 +45,7 @@ EOF
 fi
 }
 yum_mk_up(){
+yum clean all
 yum makecache
 if [ $release = 8 ];then
     if grep -i "Red Hat" /etc/redhat-release > /dev/null ;then
