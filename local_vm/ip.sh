@@ -39,6 +39,7 @@ EOF
             nmcli connection delete "$network_card"
             cat > /tmp/ip2.sh << EOF
 #!/bin/bash
+sleep 10
 ip a | grep eth0 > /dev/null
 if [ \$? == 0 ];then
     nmcli connection show | grep -i wired >> /dev/null
@@ -94,7 +95,7 @@ fi
 EOF
             chmod +x /tmp/ip2.sh
             chmod +x /etc/rc.d/rc.local
-            echo "/tmp/ip2.sh" >> /etc/rc.d/rc.local
+            echo "bash /tmp/ip2.sh" >> /etc/rc.d/rc.local
             reboot
 		fi
 	else
