@@ -32,7 +32,7 @@ EOF
             wget -O /etc/yum.repos.d/CentOS-Base_new.repo http://mirrors.aliyun.com/repo/Centos-7.repo
             sed -i 's/$releasever/7.7.1908/g' /etc/yum.repos.d/CentOS-Base_new.repo
             sed -i 's/$basearch/x86_64/g' /etc/yum.repos.d/CentOS-Base_new.repo
-            grep -v http://mirrors.aliyuncs.com /etc/yum.repos.d/CentOS-Base_new.repo > /etc/yum.repos.d/CentOS-Base.repo && rm -rf /etc/yum.repos.d/CentOS-Base_new.repo
+            grep -v http://mirrors.aliyuncs.com /etc/yum.repos.d/CentOS-Base_new.repo | grep -v http://mirrors.cloud.aliyuncs.com > /etc/yum.repos.d/CentOS-Base.repo && rm -rf /etc/yum.repos.d/CentOS-Base_new.repo
         elif grep -i "Red Hat" /etc/redhat-release > /dev/null ;then
             mkdir /tmp/rpm
             wget -O /tmp/rpm/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm https://mirrors.aliyun.com/centos/7.7.1908/os/x86_64/Packages/yum-metadata-parser-1.1.4-10.el7.x86_64.rpm
@@ -88,8 +88,10 @@ elif [ $release = 7 ];then
 else
     exit 1
 fi
-read -s -n1 -p "Press any key to reboot"
-reboot
+line=\`cat -n /etc/rc.d/rc.local | grep ip2.sh | awk '{print \$1}'\`
+sed -i ""\$line"d" /etc/rc.d/rc.local
+rm -rf /tmp/ip.sh
+rm -rf /tmp/1.txt
 }
 yum_config
 config_swap
