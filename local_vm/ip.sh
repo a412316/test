@@ -75,16 +75,17 @@ if [ \$? == 0 ];then
         cat /tmp/1.txt
     else
         ipaddress=\`ip a | grep inet | grep -v 127.0.0.1 | grep virbr0 -v | grep -v inet6 | awk '{print \$2}' | awk -F "/" '{print \$1}'\`
+        wget -O /tmp/yum_config.sh https://raw.githubusercontent.com/a412316/test/master/local_vm/yum_config.sh
         hostname | grep . >> /dev/null
         if [ \$? == 0 ];then
-            hostname1=\`hostname | awk -F "." '{print $1}'\`
+            hostname1=\`hostname | awk -F "." '{print \$1}'\`
             hostname2=\$(hostname)
             echo "\$ipaddress   \$hostname1 \$hostname2" >> /etc/hosts
         else
             hostname2=\$(hostname)
             echo "\$ipaddress   \$hostname2" >> /etc/hosts
         fi
-        wget -O /tmp/yum_config.sh https://raw.githubusercontent.com/a412316/test/master/local_vm/yum_config.sh && chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yumconfg.log
+        chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yumconfg.log
     fi
 else
     echo "Network Card is not eth0"
