@@ -85,7 +85,7 @@ if [ \$? == 0 ];then
             hostname2=\$(hostname)
             echo "\$ipaddress   \$hostname2" >> /etc/hosts
         fi
-        chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yumconfg.log
+        chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yum_config.log
     fi
 else
     echo "Network Card is not eth0"
