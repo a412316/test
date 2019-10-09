@@ -88,6 +88,8 @@ elif [ $release = 7 ];then
 else
     exit 1
 fi
+}
+clean(){
 line=\`cat -n /etc/rc.d/rc.local | grep ip2.sh | awk '{print \$1}'\`
 sed -i ""\$line"d" /etc/rc.d/rc.local
 rm -rf /tmp/ip.sh
@@ -96,3 +98,4 @@ rm -rf /tmp/1.txt
 yum_config
 config_swap
 yum_mk_up
+clean
