@@ -39,7 +39,7 @@ EOF
             nmcli connection delete "$network_card"
             cat > /tmp/ip2.sh << EOF
 #!/bin/bash
-sleep 10
+sleep 30
 ip a | grep eth0 > /dev/null
 if [ \$? == 0 ];then
     nmcli connection show | grep -i wired >> /dev/null
@@ -88,6 +88,10 @@ if [ \$? == 0 ];then
         fi
         chmod +x /tmp/yum_config.sh && bash /tmp/yum_config.sh | tee /tmp/yum_config.out
         sleep 5
+        line=\`cat -n /etc/rc.d/rc.local | grep ip2.sh | awk '{print \$1}'\`
+        sed -i ""\$line"d" /etc/rc.d/rc.local
+        rm -rf /tmp/ip.sh
+        rm -rf /tmp/1.txt
         rm -rf /tmp/yum_config.sh
         rm -rf /tmp/ip2.sh
         reboot
@@ -99,7 +103,7 @@ fi
 EOF
             chmod +x /tmp/ip2.sh
             chmod +x /etc/rc.d/rc.local
-            echo "bash /tmp/ip2.sh | tee /tmp/ip2.out" >> /etc/rc.d/rc.local
+            echo "bash /tmp/ip2.sh" >> /etc/rc.d/rc.local
             reboot
 		fi
 	else
