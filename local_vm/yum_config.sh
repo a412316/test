@@ -51,6 +51,22 @@ EOF
     fi
 fi
 }
+config_swap(){
+    mem=`free -m | grep -i Mem | awk '{print $2}'`
+    swap=`free -m | grep -i Swap | awk '{print $2}'`
+    i=`expr $swap / $mem`
+    if [ $i -eq 2 ];then
+        exit 1
+    elif [ $i -gt 2 ];then
+        exit 1
+    else
+        swap_new=`expr $mem / 1024 + 1`
+        dd if=/dev/zero of=/var/swapfile bs=1G count=$swap_new
+        mkswap /var/swapfile
+        swapon /var/swapfile
+        echo "/var/swapfile swap                    swap    defaults        0 0" >> /etc/fstab
+    fi
+}
 yum_mk_up(){
 yum clean all
 yum makecache
@@ -76,4 +92,5 @@ read -s -n1 -p "Press any key to reboot"
 reboot
 }
 yum_config
+config_swap
 yum_mk_up
