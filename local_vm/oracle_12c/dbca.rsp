@@ -418,7 +418,7 @@ datafileDestination={ORACLE_BASE}/oradata/{DB_UNIQUE_NAME}/
 # Default value : $ORACLE_BASE/flash_recovery_area
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-recoveryAreaDestination={ORACLE_BASE}/oradata_back/{DB_UNIQUE_NAME}
+recoveryAreaDestination={ORACLE_BASE}/flash_recovery_area/{DB_UNIQUE_NAME}
 
 #-----------------------------------------------------------------------------
 # Name          : storageType
