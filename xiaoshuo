@@ -1,0 +1,8 @@
+# Advertising 广告
+# > General
+
+DOMAIN-SUFFIX,applovefrom.com,REJECT
+DOMAIN-SUFFIX,suibyuming.com,REJECT
+DOMAIN-SUFFIX,umeng.com,REJECT
+DOMAIN-SUFFIX,umengcloud.com,REJECT
+DOMAIN-SUFFIX,app-measurement.com,REJECT
