@@ -1,4 +1,5 @@
 # > Home
-IP-CIDR,192.168.50.89/32,Home
-IP-CIDR,192.168.50.91/32,Home
-IP-CIDR,192.168.50.92/32,Home
+DOMAIN-SUFFIX,ha.crazy126.xyz,Home
+DOMAIN-SUFFIX,openwrt.crazy126.xyz,Home
+DOMAIN-SUFFIX,nas.crazy126.xyz,Home
+DOMAIN-SUFFIX,aria2.crazy126.xyz,Home
