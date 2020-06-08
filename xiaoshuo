@@ -7,3 +7,5 @@ DOMAIN-SUFFIX,umeng.com,REJECT
 DOMAIN-SUFFIX,umengcloud.com,REJECT
 DOMAIN-SUFFIX,app-measurement.com,REJECT
 DOMAIN-SUFFIX,bxmns.com,REJECT
+HOST,mi.gdt.qq.com,REJECT
+HOST,v2.gdt.qq.com,REJECT
