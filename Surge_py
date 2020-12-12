@@ -99,7 +99,7 @@ hide-udp=0
 [Proxy]
 🌐Direct = direct
 ⛔️Reject = reject
-nodes
+Proxy_Nodes
 
 [Proxy Group]
 # 白名单模式 PROXY，黑名单模式 DIRECT
@@ -107,12 +107,12 @@ nodes
 # 节点选项
 🌑Proxy = select,🧯Fallback,🕹AutoTest
 # 国际流媒体服务
-🎞Streaming = select,🌑Proxy,🕹AutoTest,node_names
+🎞Streaming = select,🌑Proxy,🕹AutoTest,Node_Names
 # 中国流媒体服务（面向海外版本）
 🎞StreamingSE = select,🌐Direct,node_names
 # 游戏模式（⚠️所用节点需开启 UDP 转发支持）
 # 🎮Game = select,🌐Direct,🇭🇰Sandbox
-🎮LOL = select,🌐Direct,game_nodes
+🎮LOL = select,🌐Direct,Game_nodes
 
 # 防御
 🛡Guard = select,⛔️Reject,🌐Direct
