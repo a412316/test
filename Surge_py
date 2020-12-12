@@ -109,7 +109,7 @@ Proxy_Nodes
 # 国际流媒体服务
 🎞Streaming = select,🌑Proxy,🕹AutoTest,Node_Names
 # 中国流媒体服务（面向海外版本）
-🎞StreamingSE = select,🌐Direct,node_names
+🎞StreamingSE = select,🌐Direct,Node_Names
 # 游戏模式（⚠️所用节点需开启 UDP 转发支持）
 # 🎮Game = select,🌐Direct,🇭🇰Sandbox
 🎮LOL = select,🌐Direct,Game_nodes
@@ -117,9 +117,9 @@ Proxy_Nodes
 # 防御
 🛡Guard = select,⛔️Reject,🌐Direct
 # 可用性自动测试
-🧯Fallback = fallback,🇺🇸LosSantos,🇨🇳TheHub,url = http://www.gstatic.com/generate_204
+🧯Fallback = fallback,Node_Names,url = http://www.gstatic.com/generate_204
 # 延迟自动测试
-🕹AutoTest = url-test,🇺🇸LosSantos,🇭🇰Sandbox,url = http://www.gstatic.com/generate_204
+🕹AutoTest = url-test,Node_Names,url = http://www.gstatic.com/generate_204
 
 [Rule]
 # https://raw.githubusercontent.com/DivineEngine/Profiles/master/Quantumult/Filter/Extra/Apple/BlockiOSUpdate.list,⛔️Reject
