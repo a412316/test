@@ -106,6 +106,8 @@ Proxy_Nodes
 🧭Final = select,🌑Proxy,🌐Direct
 # 节点选项
 🌑Proxy = select,🧯Fallback,🕹AutoTest
+# Netease Music
+# 🎞Netease = select,🌐Direct
 # 国际流媒体服务
 🎞Streaming = select,🌑Proxy,🕹AutoTest,Node_Names
 # 中国流媒体服务（面向海外版本）
@@ -154,6 +156,9 @@ RULE-SET,https://raw.githubusercontent.com/a412316/test/master/xiaoshuo_surge,�
 
 # Hijacking 运营商劫持或恶意网站
 RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Guard/Hijacking.list,🛡Guard
+
+# Netease Music
+# RULE-SET,https://raw.githubusercontent.com/lhie1/Rules/master/Surge/Surge%203/Provider/Media/Netease%20Music.list,🎞Netease
 
 # Streaming 国际流媒体服务
 RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/StreamingMedia/Streaming.list,🎞Streaming
