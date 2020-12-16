@@ -99,6 +99,7 @@ hide-udp=0
 [Proxy]
 🌐Direct = direct
 ⛔️Reject = reject
+Music_Nodes
 Proxy_Nodes
 
 [Proxy Group]
@@ -107,7 +108,7 @@ Proxy_Nodes
 # 节点选项
 🌑Proxy = select,🧯Fallback,🕹AutoTest
 # Netease Music
-# 🎞Netease = select,🌐Direct
+# 🎞Netease = select,Music_Name,🌐Direct
 # 国际流媒体服务
 🎞Streaming = select,🌑Proxy,🕹AutoTest,Node_Names
 # 中国流媒体服务（面向海外版本）
