@@ -1,0 +1,5 @@
+# 广告补充
+# > General
+
+DOMAIN-SUFFIX,googlesyndication.com,REJECT
+DOMAIN-SUFFIX,doubleclick.net,REJECT
