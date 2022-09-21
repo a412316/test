@@ -1,7 +1,7 @@
 # NAME: UnAdvertising
-DOMAIN,rqd.qq.com
-DOMAIN,mdt.qq.com
-DOMAIN,3g.qq.com
-DOMAIN,qcloud.com
-DOMAIN,image.myqcloud.com
-DOMAIN,reader.qq.com
+DOMAIN-SUFFIX,rqd.qq.com
+DOMAIN-SUFFIX,mdt.qq.com
+DOMAIN-SUFFIX,3g.qq.com
+DOMAIN-SUFFIX,qcloud.com
+DOMAIN-SUFFIX,image.myqcloud.com
+DOMAIN-SUFFIX,reader.qq.com
