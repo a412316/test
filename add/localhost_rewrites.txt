@@ -1,14 +1,23 @@
 # > 自用内网DNS重写
-192.168.50.1    openwrt.xiao2026.com
-192.168.50.2    ax9000.xiao2026.com
-192.168.50.3    sw.xiao2026.com
-192.168.50.4    pve.xiao2026.com
-192.168.50.5    vpn.xiao2026.com
-192.168.50.6    tailscale.xiao2026.com
-192.168.50.7    adg.xiao2026.com
-192.168.50.8    cloudflare.xiao2026.com
-192.168.50.11   fnos.xiao2026.com
-192.168.50.12   gitea.xiao2026.com id.xiao2026.com substore.xiao2026.com grafana.xiao2026.com s3.crazy1226.xyz bitwarden.xiao2026.com local.crazy1226.xyz sun-panel.xiao2026.com neko.xiao2026.com
-192.168.50.91   mini.xiao2026.com
-192.168.51.1    op51.xiao2026.com
+||openwrt.xiao2026.com^$dnsrewrite=192.168.50.1
+||ax9000.xiao2026.com^$dnsrewrite=192.168.50.2
+||sw.xiao2026.com^$dnsrewrite=192.168.50.3
+||pve.xiao2026.com^$dnsrewrite=192.168.50.4
+||vpn.xiao2026.com^$dnsrewrite=192.168.50.5
+||tailscale.xiao2026.com^$dnsrewrite=192.168.50.6
+||adg.xiao2026.com^$dnsrewrite=192.168.50.7
+||cloudflare.xiao2026.com^$dnsrewrite=192.168.50.8
+||fnos.xiao2026.com^$dnsrewrite=192.168.50.11
+||gitea.xiao2026.com^$dnsrewrite=192.168.50.12
+||id.xiao2026.com^$dnsrewrite=192.168.50.12
+||substore.xiao2026.com^$dnsrewrite=192.168.50.12
+||grafana.xiao2026.com^$dnsrewrite=192.168.50.12
+||s3.crazy1226.xyz^$dnsrewrite=192.168.50.12
+||bitwarden.xiao2026.com^$dnsrewrite=192.168.50.12
+||local.crazy1226.xyz^$dnsrewrite=192.168.50.12
+||sun-panel.xiao2026.com^$dnsrewrite=192.168.50.12
+||neko.xiao2026.com^$dnsrewrite=192.168.50.12
+||mini.xiao2026.com^$dnsrewrite=192.168.50.91
+||op51.xiao2026.com^$dnsrewrite=192.168.51.1
+
   
