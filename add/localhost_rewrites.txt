@@ -1,10 +1,10 @@
 # > 自用内网DNS重写
 ||openwrt.xiao2026.com^$dnsrewrite=192.168.50.1
-||ax9000.xiao2026.com^$dnsrewrite=192.168.50.2
-||sw.xiao2026.com^$dnsrewrite=192.168.50.3
 ||pve.xiao2026.com^$dnsrewrite=192.168.50.4
 ||vpn.xiao2026.com^$dnsrewrite=192.168.50.5
 ||tailscale.xiao2026.com^$dnsrewrite=192.168.50.6
+||sw.xiao2026.com^$dnsrewrite=192.168.50.7
+||ax9000.xiao2026.com^$dnsrewrite=192.168.50.7
 ||adg.xiao2026.com^$dnsrewrite=192.168.50.7
 ||cloudflare.xiao2026.com^$dnsrewrite=192.168.50.8
 ||fnos.xiao2026.com^$dnsrewrite=192.168.50.11
